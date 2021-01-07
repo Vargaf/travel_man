@@ -1,0 +1,22 @@
+FROM php:8.0-fpm
+
+COPY ./devops/php/php.ini /usr/local/etc/php/conf.d/docker-php-config.ini
+
+RUN apt-get update && apt-get install -y \
+    unzip \
+    libzip-dev \
+    libxslt1-dev \
+    libpng-dev \
+    git \
+    wget
+
+RUN docker-php-ext-install \
+    pdo_mysql zip xsl gd intl opcache exif
+
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+RUN wget https://get.symfony.com/cli/installer -O - | bash
+RUN mv /root/.symfony/bin/symfony /usr/local/bin/symfony
+
+RUN mkdir /project
+WORKDIR /project
