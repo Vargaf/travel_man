@@ -29,3 +29,8 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    zinio.command.travel-man:
+      class: App\Command\TravelManCommand
+      tags:
+          -  { name: console.command }
