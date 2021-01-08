@@ -34,3 +34,8 @@ services:
       class: App\Command\TravelManCommand
       tags:
           -  { name: console.command }
+
+    Zinio\:
+        resource: '../Zinio/'
+        exclude:
+            - '../Zinio/Tests/'

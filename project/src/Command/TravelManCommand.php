@@ -27,6 +27,8 @@ class TravelManCommand extends Command
     {
         // ... put here the code to create the user
 
+        
+
 
         // green text
         $output->writeln('<info>foo</info>');

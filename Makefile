@@ -11,18 +11,15 @@ help: ## This help.
 #
 .PHONY: build
 build: ### Builds the docker images
-	if [ ! -d "./db" ]; then mkdir db && chmod 777 ./db; fi
 	if [ ! -d "./project/vendor" ]; then docker-compose -f devops/docker-compose.yml run php composer install; fi
 	docker-compose -f devops/docker-compose.yml build
 
 .PHONY: run
 run: ### Runs the dockers to bring up the system
-	if [ ! -d "./db" ]; then mkdir db && chmod 777 ./db; fi
 	if [ ! -d "./project/vendor" ]; then docker-compose -f devops/docker-compose.yml run php composer install; fi
 	docker-compose -f devops/docker-compose.yml up
 
 .PHONY: tests
 tests: ### Runs the project tests
-	if [ ! -d "./db" ]; then mkdir db && chmod 777 ./db; fi
 	if [ ! -d "./project/vendor" ]; then docker-compose -f devops/docker-compose.yml run php composer install; fi
 	docker-compose -f devops/docker-compose.yml run php ./bin/phpunit Zinio
