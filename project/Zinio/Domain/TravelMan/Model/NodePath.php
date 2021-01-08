@@ -12,7 +12,7 @@ class NodePath
     {
         $this->name = $name;
         $this->coordinateA = $coordinateA;
-        $this->coordinateAB = $coordinateB;
+        $this->coordinateB = $coordinateB;
     }
 
     public function name(): string
