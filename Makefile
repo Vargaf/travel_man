@@ -23,3 +23,8 @@ run: ### Runs the dockers to bring up the system
 tests: ### Runs the project tests
 	if [ ! -d "./project/vendor" ]; then docker-compose -f devops/docker-compose.yml run php composer install; fi
 	docker-compose -f devops/docker-compose.yml run php ./bin/phpunit Zinio
+
+.PHONY: travel-man
+travel-man: ### Runs the travel man algorithm to the cities file
+	if [ ! -d "./project/vendor" ]; then docker-compose -f devops/docker-compose.yml run php composer install; fi
+	docker-compose -f devops/docker-compose.yml run php symfony console zinio:travel-man $(maxNodesToForesight)
