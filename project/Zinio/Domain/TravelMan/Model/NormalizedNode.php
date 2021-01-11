@@ -2,17 +2,19 @@
 
 namespace Zinio\Domain\TravelMan\Model;
 
-class NodePath
+class NormalizedNode
 {
     private string $name;
     private int $coordinateA;
     private int $coordinateB;
+    private int $positionInList;
 
-    public function __construct(string $name, int $coordinateA, int $coordinateB)
+    public function __construct(string $name, int $coordinateA, int $coordinateB, int $positionInList)
     {
         $this->name = $name;
         $this->coordinateA = $coordinateA;
         $this->coordinateB = $coordinateB;
+        $this->positionInList = $positionInList;
     }
 
     public function name(): string
@@ -28,6 +30,11 @@ class NodePath
     public function coordinateB(): int
     {
         return $this->coordinateB;
+    }
+
+    public function positionInList(): int
+    {
+        return $this->positionInList;
     }
 
 }

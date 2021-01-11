@@ -3,40 +3,30 @@
 namespace Zinio\Domain\TravelMan\Services;
 
 use Zinio\Domain\Cities\Model\City;
-use Zinio\Domain\TravelMan\Model\NodePath;
+use Zinio\Domain\TravelMan\Model\NormalizedNode;
 
 class NormalizeCoordinatesService
 {
     /**
-     * @var int $sortedACordinateList
-     */
-    private array $sortedACordinateList = [];
-
-    /**
-     * @var int $sortedBCordinateList
-     */
-    private array $sortedBCordinateList = [];
-
-    /**
      * @param City[] $citiesList
      * 
-     * @return NodePath[]
+     * @return NormalizedNode[]
      */
-    public function normailze(array $citiesList): array
+    public static function normailze(array $citiesList): array
     {
-        /** @var NodePath[] $nodeList */
+        /** @var NormalizedNode[] $nodeList */
         $nodeList = [];
 
-        $sortedACordinateList = $this->sortACordinates($citiesList);
-        $sortedBCordinateList = $this->sortBCordinates($citiesList);
+        $sortedACordinateList = self::sortACordinates($citiesList);
+        $sortedBCordinateList = self::sortBCordinates($citiesList);
 
         /** @var City $city */    
-        foreach($citiesList as $city) {
+        foreach($citiesList as $cityIndex => $city) {
             $normalizedACoordinate = array_search($city->coordinateA(), $sortedACordinateList) + 1;
             $normalizedBCoordinate = array_search($city->coordinateB(), $sortedBCordinateList) + 1;
 
-            $nodePath = new NodePath($city->name(), $normalizedACoordinate, $normalizedBCoordinate);
-            $nodeList[] = $nodePath;
+            $normalizedNodePath = new NormalizedNode($city->name(), $normalizedACoordinate, $normalizedBCoordinate, $cityIndex);
+            $nodeList[] = $normalizedNodePath;
         }
 
         return $nodeList;
@@ -47,7 +37,7 @@ class NormalizeCoordinatesService
      * 
      * @return float[]
      */
-    private function sortACordinates(array $citiesList): array
+    private static function sortACordinates(array $citiesList): array
     {
         $coordinateList = [];
         
@@ -66,7 +56,7 @@ class NormalizeCoordinatesService
      * 
      * @return float[]
      */
-    private function sortBCordinates(array $citiesList): array
+    private static function sortBCordinates(array $citiesList): array
     {
         $coordinateList = [];
         

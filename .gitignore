@@ -50,3 +50,7 @@
 
 # Embedded web-server pid file
 /.web-server-pid
+db/cities_graph.graphml
+db/cities_graph.txt
+db/var_dump_actual.txt
+db/var_dump_expected.txt
