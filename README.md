@@ -77,74 +77,85 @@ The algorithm tries to find the shortest paht by checking the nearest nodes, but
 
     make travel-man maxNodesToForesight=X
 
-As you can see, it is possible to adjust the number of nodes to foresee, curiously the more does not means the better, in this case, the equilibrated one to the given cities list is set it by deffault at a value of 4, if you are bored I encourage you to try other numbers. During my testing I found that a **maxNodesToForesight=7** gives the best solution, but at a huge ammount of time. Don't worry, you wont need to do it, I will show you below:
+As you can see, it is possible to adjust the number of nodes to foresee, curiously the more does not means the better, in this case, the equilibrated one to the given cities list is set it by deffault at a value of 4, if you are bored I encourage you to try other numbers. During my testing I found that a **maxNodesToForesight=7** gives the best solution, but at a huge ammount of time. Don't worry, you wont need to do it, at the end of the document you will find the generated list with the default value and the best path.
+
+The main file in charge to find the these solutions is **CalculatePathService** and it could we found at:
+
+    project/Zinio/Domain/TravelMan/Services/CalculatePathService.php
+
+And the file that launch the command is **TravelManCommand** and it could be found at:
+
+    project/src/Command/TravelManCommand.php
+
+## The possible solutions
 
 ### With default configuration:
 
-Beijing
-Tokyo
-Bangkok
-New Delhi
-Jerusalem
-Cairo
-Casablanca
-Dakar
-Caracas
-San Jose
-Lima
-Rio
-Santiago
-Accra
-Lusaka
-Singapore
-Vladivostok
-Astana
-Moscow
-Prague
-Paris
-London
-New York
-Toronto
-Mexico City
-San Francisco
-Vancouver
-Anchorage
-Reykjavík
-Perth
-Melbourne
-Auckland
+ - Beijing
+ - Tokyo
+ - Bangkok
+ - New Delhi
+ - Jerusalem
+ - Cairo
+ - Casablanca
+ - Dakar
+ - Caracas
+ - San Jose
+ - Lima
+ - Rio
+ - Santiago
+ - Accra
+ - Lusaka
+ - Singapore
+ - Vladivostok
+ - Astana
+ - Moscow
+ - Prague
+ - Paris
+ - London
+ - New York
+ - Toronto
+- -Mexico City
+ - San Francisco
+- Vancouver
+- Anchorage
+- Reykjavík
+- Perth
+- Melbourne
+- Auckland
 
 ### Best path found
 
-Beijing
-Tokyo
-Vladivostok
-Astana
-Moscow
-Prague
-Paris
-Casablanca
-Cairo
-Jerusalem
-New Delhi
-Bangkok
-Singapore
-Lusaka
-Accra
-Dakar
-Caracas
-Santiago
-Rio
-Lima
-San Jose
-Mexico City
-San Francisco
-Vancouver
-Toronto
-New York
-Anchorage
-Reykjavík
-London
-Perth
-Melbourne
-Auckland
+- Beijing
+- Tokyo
+- Vladivostok
+- Astana
+- Moscow
+- Prague
+- Paris
+- Casablanca
+- Cairo
+- Jerusalem
+- New Delhi
+- Bangkok
+- Singapore
+- Lusaka
+- Accra
+- Dakar
+- Caracas
+- Santiago
+- Rio
+- Lima
+- San Jose
+- Mexico City
+- San Francisco
+- Vancouver
+- Toronto
+- New York
+- Anchorage
+- Reykjavík
+- London
+- Perth
+- Melbourne
+- Auckland
+
